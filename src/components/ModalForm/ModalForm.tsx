@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import CheckIcon from '@mui/icons-material/Check';
 import Typography from '@mui/material/Typography';
 import { ChangeEvent, Dispatch, FormEventHandler, forwardRef, SetStateAction, useState } from 'react';
-import CloseIcon from './CloseIcon';
+import CloseIcon from './Assets/CloseIcon';
 import Divider from '@mui/material/Divider';
 import TimerInput from './Assets/TimerInput/TimerInput';
-import { CloseButtonStyles, FontGroupContainer, FormControlLabelStyles, ModalFormStyles } from './ModalForm.styles';
+import { CloseButtonStyles, FontGroupContainer, FormControlLabelStyles, LowerSubHeadings, ModalFormStyles, SubHeadingStyles, TimeBoxStyles } from './ModalForm.styles';
 import FontRadioButton from './Assets/FontRadioButton';
 import ColorRadioButton from './Assets/ColorRadioButton';
 import SubmitButton from './Assets/SubmitButton';
-import { ApplicationData } from '../../interfaces';
-import { Font } from '../../enums';
+import { ApplicationData } from '../../utils/interfaces';
+import { Font } from '../../utils/enums';
 
 interface ModalFormProps {
   handleClose: () => void;
@@ -58,17 +58,17 @@ export default forwardRef<HTMLFormElement, ModalFormProps>((props, ref) => {
       </Box>
       <Divider />
       <Box sx={{ py: 4.5, px: 5 }}>
-        <Typography component='h3' variant='h3'>
+        <Typography component='h3' variant='h3' sx={SubHeadingStyles}>
           Time (Minutes)
         </Typography>
-        <Box display='flex' justifyContent='space-between' my={3} gap={2}>
+        <Box sx={TimeBoxStyles} my={3} gap={2}>
           <TimerInput data={pomodoroTime} setData={setPomodoroTime} label='pomodoro' />
           <TimerInput data={shortBreakTime} setData={setShortBreakTime} label='short_break' />
           <TimerInput data={longBreakTime} setData={setLongBreakTime} label='long_break' />
         </Box>
         <Divider />
         <Box sx={FontGroupContainer}>
-          <Typography component='h3' variant='h3' sx={{ my: 1 }}>
+          <Typography component='h3' variant='h3' sx={LowerSubHeadings}>
             Font
           </Typography>
           <Box display='flex' justifyContent='space-between' gap={2}>
@@ -81,7 +81,7 @@ export default forwardRef<HTMLFormElement, ModalFormProps>((props, ref) => {
         </Box>
         <Divider />
         <Box sx={FontGroupContainer}>
-          <Typography component='h3' variant='h3' sx={{ my: 1 }}>
+          <Typography component='h3' variant='h3' sx={LowerSubHeadings}>
             Color
           </Typography>
           <Box display='flex' justifyContent='space-between' gap={2}>

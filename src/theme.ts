@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material';
-import { Font } from './enums';
+import { Font } from './utils/enums';
 
 export const theme = createTheme({
   palette: {

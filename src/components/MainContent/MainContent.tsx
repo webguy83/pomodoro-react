@@ -1,6 +1,6 @@
 import Container from '@mui/material/Container';
 import { useState } from 'react';
-import { ApplicationData } from '../../interfaces';
+import { ApplicationData } from '../../utils/interfaces';
 import NavBar from '../NavBar/NavBar';
 import TimerClock from '../TimerClock/TimerClock';
 import { MainContentStyles } from './MainContent.styles';
@@ -8,7 +8,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Modal from '@mui/material/Modal';
 import ModalForm from '../ModalForm/ModalForm';
-import { Font, Mode } from '../../enums';
+import { Font, Mode } from '../../utils/enums';
 
 const defaultData: ApplicationData = {
   pomodoro: 25,

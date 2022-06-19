@@ -12,13 +12,13 @@ export const MainTimerStyle: SxProps<Theme> = {
 
 export const InnerBgStyle: SxProps<Theme> = {
   backgroundColor: (theme: Theme) => theme.palette.primary.dark,
-  width: '91%',
+  width: '95%',
   aspectRatio: '1/1',
   borderRadius: '50%',
   position: 'relative',
 };
 
-export const MainTimerLineStyle: SxProps<Theme> = {
+export const MainTimerLineStyle = {
   p: 2,
   '& .MuiCircularProgress-circle': {
     strokeLinecap: 'round',
@@ -35,12 +35,7 @@ export const TimerInfoStyle: SxProps<Theme> = {
   transform: 'translate(-50%, -50%)',
 };
 
-export const TimerStyle: SxProps<Theme> = {
-  fontSize: 100,
-  letterSpacing: -5,
-};
-
-export const StatusStyle: SxProps<Theme> = {
+export const StatusStyle = {
   textTransform: 'uppercase',
   letterSpacing: 15,
   fontWeight: 700,

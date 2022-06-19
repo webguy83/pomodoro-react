@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
-import { InnerBgStyle, MainTimerLineStyle, MainTimerStyle, StatusStyle, TimerInfoStyle, TimerStyle } from './TimerClock.styles';
+import { InnerBgStyle, MainTimerLineStyle, MainTimerStyle, StatusStyle, TimerInfoStyle } from './TimerClock.styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
-import { Font, Mode } from '../../enums';
+import { Font, Mode } from '../../utils/enums';
 
 interface TimeClockProps {
   currentselectedcolour: string;
@@ -39,7 +39,7 @@ export default function TimerClock({ currentselectedcolour, defaultSeconds, mode
   const [timerStatus, setTimerStatus] = useState<TimerStatus>(TimerStatus.Start);
   const [seconds, setSeconds] = useState<number>(defaultSeconds);
 
-  let letterSpacing;
+  let letterSpacing = -5;
   let fontWeight = 700;
 
   switch (font) {
@@ -91,41 +91,69 @@ export default function TimerClock({ currentselectedcolour, defaultSeconds, mode
   };
 
   return (
-    <Button
-      disableRipple
-      onClick={onTimerButtonClick}
-      sx={{
-        ...MainTimerStyle,
-        '&:hover': {
-          cursor: 'pointer',
-          '.timer-status': {
-            color: currentselectedcolour,
-          },
-        },
-      }}
-    >
-      <Box sx={InnerBgStyle}>
-        <CircularProgress
-          variant='determinate'
-          size='100%'
-          value={(seconds / defaultSeconds) * 100}
-          thickness={1.5}
-          sx={{
-            ...MainTimerLineStyle,
-            '&.MuiCircularProgress-root': {
+    <Box component='main' width='100%'>
+      <Button
+        disableRipple
+        onClick={onTimerButtonClick}
+        sx={{
+          ...MainTimerStyle,
+          '&:hover': {
+            cursor: 'pointer',
+            '.timer-status': {
               color: currentselectedcolour,
             },
-          }}
-        />
-        <Box sx={TimerInfoStyle}>
-          <Box component='span' sx={{ ...TimerStyle, fontFamily: font, letterSpacing, fontWeight }}>
-            {convertTime(seconds)}
-          </Box>
-          <Box component='span' className='timer-status' sx={{ ...StatusStyle, fontFamily: font }}>
-            {timerStatus}
+          },
+        }}
+      >
+        <Box sx={InnerBgStyle}>
+          <CircularProgress
+            variant='determinate'
+            size='100%'
+            value={(seconds / defaultSeconds) * 100}
+            thickness={1.5}
+            sx={(theme) => ({
+              ...MainTimerLineStyle,
+              '&.MuiCircularProgress-root': {
+                color: currentselectedcolour,
+              },
+              [theme.breakpoints.down('sm')]: {
+                '& .MuiCircularProgress-circle': {
+                  strokeWidth: 1,
+                },
+              },
+            })}
+          />
+          <Box sx={TimerInfoStyle}>
+            <Box
+              component='span'
+              sx={(theme) => ({
+                fontSize: font === Font.Space ? 90 : 100,
+                fontFamily: font,
+                letterSpacing,
+                fontWeight,
+                [theme.breakpoints.down('sm')]: {
+                  fontSize: font === Font.Space ? 70 : 75,
+                },
+              })}
+            >
+              {convertTime(seconds)}
+            </Box>
+            <Box
+              component='span'
+              className='timer-status'
+              sx={(theme) => ({
+                ...StatusStyle,
+                fontFamily: font,
+                [theme.breakpoints.down('sm')]: {
+                  fontSize: 12,
+                },
+              })}
+            >
+              {timerStatus}
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Button>
+      </Button>
+    </Box>
   );
 }

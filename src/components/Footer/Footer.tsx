@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import { FooterIconButtonStyles } from './Footer.styles';
-import SettingsIcon from './SettingsIcon';
+import SettingsIcon from './Assets/SettingsIcon';
 
 interface FooterProps {
   onSettingsIconClick: () => void;
