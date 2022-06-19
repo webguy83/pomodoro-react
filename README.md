@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-pomodoro-timer-in-reactmaterial-uitypescript-D6XGNtVFck)
 - Live Site URL: [App](https://webguy83.github.io/pomodoro-react/)
 
 ## My process

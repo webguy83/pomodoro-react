@@ -107,6 +107,7 @@ export default function TimerClock({ currentselectedcolour, defaultSeconds, mode
       >
         <Box sx={InnerBgStyle}>
           <CircularProgress
+            aria-label='time left'
             variant='determinate'
             size='100%'
             value={(seconds / defaultSeconds) * 100}
