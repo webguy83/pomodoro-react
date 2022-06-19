@@ -9,7 +9,7 @@ export const InputStyles: SxProps<Theme> = (theme: Theme) => ({
   },
 });
 
-export const InputBaseStyles: SxProps<Theme> = { color: (theme: Theme) => theme.palette.primary.main };
+export const InputBaseStyles: SxProps<Theme> = { color: (theme: Theme) => theme.palette.primary.main, width: '100%' };
 
 export const InputStylesHover = {
   '&:hover': {

@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import { InnerBgStyle, MainTimerLineStyle, MainTimerStyle, StatusStyle, TimerInfoStyle } from './TimerClock.styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
 import { Font, Mode } from '../../utils/enums';
 
 interface TimeClockProps {
@@ -92,8 +91,8 @@ export default function TimerClock({ currentselectedcolour, defaultSeconds, mode
 
   return (
     <Box component='main' width='100%'>
-      <Button
-        disableRipple
+      <Box
+        component='a'
         onClick={onTimerButtonClick}
         sx={{
           ...MainTimerStyle,
@@ -154,7 +153,7 @@ export default function TimerClock({ currentselectedcolour, defaultSeconds, mode
             </Box>
           </Box>
         </Box>
-      </Button>
+      </Box>
     </Box>
   );
 }
