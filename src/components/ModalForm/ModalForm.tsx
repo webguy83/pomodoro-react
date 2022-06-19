@@ -5,12 +5,13 @@ import Typography from '@mui/material/Typography';
 import { ChangeEvent, Dispatch, FormEventHandler, forwardRef, SetStateAction, useState } from 'react';
 import CloseIcon from './CloseIcon';
 import Divider from '@mui/material/Divider';
-import TimerInput from '../TimerInput/TimerInput';
+import TimerInput from './Assets/TimerInput/TimerInput';
 import { CloseButtonStyles, FontGroupContainer, FormControlLabelStyles, ModalFormStyles } from './ModalForm.styles';
 import FontRadioButton from './Assets/FontRadioButton';
 import ColorRadioButton from './Assets/ColorRadioButton';
 import SubmitButton from './Assets/SubmitButton';
 import { ApplicationData } from '../../interfaces';
+import { Font } from '../../enums';
 
 interface ModalFormProps {
   handleClose: () => void;
@@ -72,9 +73,9 @@ export default forwardRef<HTMLFormElement, ModalFormProps>((props, ref) => {
           </Typography>
           <Box display='flex' justifyContent='space-between' gap={2}>
             <RadioGroup aria-labelledby='font-radio-group' value={font} onChange={onFontChange} name='font-radio-group' sx={{ flexDirection: 'row' }}>
-              <FormControlLabel sx={FormControlLabelStyles} value='kumbh' control={<FontRadioButton />} label='Aa' />
-              <FormControlLabel sx={FormControlLabelStyles} value='roboto' control={<FontRadioButton fontFamily='Roboto Slab, serif' fontWeight={400} />} label='Aa' />
-              <FormControlLabel sx={FormControlLabelStyles} value='space' control={<FontRadioButton fontFamily='Space Mono, serif' />} label='Aa' />
+              <FormControlLabel sx={FormControlLabelStyles} value={Font.Kumbh} control={<FontRadioButton />} label='Aa' />
+              <FormControlLabel sx={FormControlLabelStyles} value={Font.Roboto} control={<FontRadioButton fontFamily={Font.Roboto} fontWeight={400} />} label='Aa' />
+              <FormControlLabel sx={FormControlLabelStyles} value={Font.Space} control={<FontRadioButton fontFamily={Font.Space} />} label='Aa' />
             </RadioGroup>
           </Box>
         </Box>

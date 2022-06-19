@@ -1,7 +1,7 @@
-import { Theme } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
 import { centerContent } from '../../utils';
 
-export const MainTimerStyle = {
+export const MainTimerStyle: SxProps<Theme> = {
   ...centerContent,
   backgroundImage: 'linear-gradient(125deg, #0E112A 0%, #2E325A 100%)',
   borderRadius: '50%',
@@ -10,7 +10,7 @@ export const MainTimerStyle = {
   boxShadow: '-45px -25px 90px -55px #2e325a, 45px 25px 90px -55px #0e112a;',
 };
 
-export const InnerBgStyle = {
+export const InnerBgStyle: SxProps<Theme> = {
   backgroundColor: (theme: Theme) => theme.palette.primary.dark,
   width: '91%',
   aspectRatio: '1/1',
@@ -18,14 +18,14 @@ export const InnerBgStyle = {
   position: 'relative',
 };
 
-export const MainTimerLineStyle = {
+export const MainTimerLineStyle: SxProps<Theme> = {
   p: 2,
   '& .MuiCircularProgress-circle': {
     strokeLinecap: 'round',
   },
 };
 
-export const TimerInfoStyle = {
+export const TimerInfoStyle: SxProps<Theme> = {
   ...centerContent,
   color: (theme: Theme) => theme.palette.secondary.main,
   position: 'absolute',
@@ -35,12 +35,14 @@ export const TimerInfoStyle = {
   transform: 'translate(-50%, -50%)',
 };
 
-export const TimerStyle = {
+export const TimerStyle: SxProps<Theme> = {
   fontSize: 100,
   letterSpacing: -5,
 };
 
-export const StatusStyle = {
+export const StatusStyle: SxProps<Theme> = {
   textTransform: 'uppercase',
   letterSpacing: 15,
+  fontWeight: 700,
+  fontSize: 16,
 };

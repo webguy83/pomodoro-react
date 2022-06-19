@@ -8,13 +8,13 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Modal from '@mui/material/Modal';
 import ModalForm from '../ModalForm/ModalForm';
-import { Mode } from '../../enums';
+import { Font, Mode } from '../../enums';
 
 const defaultData: ApplicationData = {
   pomodoro: 25,
   short_break: 5,
   long_break: 15,
-  font: 'kumbh',
+  font: Font.Kumbh,
   color: 'red',
 };
 
@@ -35,8 +35,8 @@ export default function MainContent() {
     <>
       <Container maxWidth='sm' sx={MainContentStyles}>
         <Header />
-        <NavBar currentColour={colorTable[applicationData.color]} mode={mode} setMode={setMode} />
-        <TimerClock mode={mode} defaultSeconds={applicationData[mode] * 60} currentColour={colorTable[applicationData.color]} />
+        <NavBar font={applicationData.font} currentselectedcolour={colorTable[applicationData.color]} mode={mode} setMode={setMode} />
+        <TimerClock font={applicationData.font} mode={mode} defaultSeconds={applicationData[mode] * 60} currentselectedcolour={colorTable[applicationData.color]} />
         <Footer onSettingsIconClick={handleOpen} />
       </Container>
       <Modal open={openModal} onClose={handleClose} aria-labelledby='settings' aria-describedby='settings'>

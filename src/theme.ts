@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { Font } from './enums';
 
 export const theme = createTheme({
   palette: {
@@ -12,7 +13,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Kumbh Sans', 'sans-serif'].join(','),
+    fontFamily: Font.Kumbh,
     h2: {
       fontSize: 28,
       color: '#161932',

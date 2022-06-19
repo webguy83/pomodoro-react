@@ -3,12 +3,13 @@ import { InnerBgStyle, MainTimerLineStyle, MainTimerStyle, StatusStyle, TimerInf
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
-import { Mode } from '../../enums';
+import { Font, Mode } from '../../enums';
 
 interface TimeClockProps {
-  currentColour: string;
+  currentselectedcolour: string;
   defaultSeconds: number;
   mode: Mode;
+  font: string;
 }
 
 enum TimerStatus {
@@ -34,9 +35,23 @@ function convertTime(secondsLeft: number) {
   return output;
 }
 
-export default function TimerClock({ currentColour, defaultSeconds, mode }: TimeClockProps) {
+export default function TimerClock({ currentselectedcolour, defaultSeconds, mode, font }: TimeClockProps) {
   const [timerStatus, setTimerStatus] = useState<TimerStatus>(TimerStatus.Start);
   const [seconds, setSeconds] = useState<number>(defaultSeconds);
+
+  let letterSpacing;
+  let fontWeight = 700;
+
+  switch (font) {
+    case Font.Kumbh:
+      break;
+    case Font.Space:
+      letterSpacing = -10;
+      fontWeight = 500;
+      break;
+    default:
+      letterSpacing = 0;
+  }
 
   useEffect(() => {
     let interval: number | undefined;
@@ -84,7 +99,7 @@ export default function TimerClock({ currentColour, defaultSeconds, mode }: Time
         '&:hover': {
           cursor: 'pointer',
           '.timer-status': {
-            color: currentColour,
+            color: currentselectedcolour,
           },
         },
       }}
@@ -98,15 +113,15 @@ export default function TimerClock({ currentColour, defaultSeconds, mode }: Time
           sx={{
             ...MainTimerLineStyle,
             '&.MuiCircularProgress-root': {
-              color: currentColour,
+              color: currentselectedcolour,
             },
           }}
         />
         <Box sx={TimerInfoStyle}>
-          <Box component='span' sx={TimerStyle}>
+          <Box component='span' sx={{ ...TimerStyle, fontFamily: font, letterSpacing, fontWeight }}>
             {convertTime(seconds)}
           </Box>
-          <Box component='span' className='timer-status' sx={StatusStyle}>
+          <Box component='span' className='timer-status' sx={{ ...StatusStyle, fontFamily: font }}>
             {timerStatus}
           </Box>
         </Box>
